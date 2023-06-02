@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// @ts-nocheck
 import Demo from './components/Demo.vue'
 import Hello from './components/Hello.md'
 </script>
