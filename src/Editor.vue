@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// @ts-nocheck
   import { reactive, shallowRef, computed, onMounted } from 'vue'
   import { javascript } from '@codemirror/lang-javascript'
   import { html } from '@codemirror/lang-html'
@@ -13,6 +14,10 @@
     html: html(),
     json: json(),
     markdown: markdown()
+  }
+  function writeCode(code) {
+    console.log('writeCode:', code)
+    import.meta.hot.send('viteblitz:demo:write', {'code':code})
   }
 
   const consoleLog = console.log
@@ -65,7 +70,7 @@
         :extensions="extensions"
         v-model="code"
         @ready="handleReady"
-        @change="consoleLog('change', $event)"
+        @change="writeCode($event)"
         @focus="consoleLog('focus', $event)"
         @blur="consoleLog('blur', $event)"
       />
