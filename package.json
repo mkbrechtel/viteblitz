@@ -1,5 +1,5 @@
 {
-  "name": "viteblitz-example",
+  "name": "viteblitz",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,8 +7,17 @@
     "dev": "vite"
   },
   "dependencies": {
+    "@codemirror/lang-html": "^6.4.3",
+    "@codemirror/lang-javascript": "^6.1.9",
+    "@codemirror/lang-json": "^6.0.1",
+    "@codemirror/lang-markdown": "^6.1.1",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "codemirror": "^6.0.1",
     "vite-plugin-vue-inspector": "^3.4.2",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-codemirror": "^6.1.1",
+    "y-websocket": "^1.5.0",
+    "yjs": "^13.6.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
