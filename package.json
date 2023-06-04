@@ -12,6 +12,7 @@
     "@codemirror/lang-json": "^6.0.1",
     "@codemirror/lang-markdown": "^6.1.1",
     "@codemirror/theme-one-dark": "^6.1.2",
+    "@mdi/font": "^7.2.96",
     "codemirror": "^6.0.1",
     "unplugin-vue-components": "^0.25.0",
     "vite-plugin-md": "^0.21.5",
