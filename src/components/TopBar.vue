@@ -2,7 +2,7 @@
     <v-system-bar window>
         <v-icon icon="mdi-lightning-bolt" class="me-2"></v-icon>
 
-        <span>Viteblitz</span>
+        <span>ViteBlitz</span>
 
         <v-spacer></v-spacer>
         <v-icon icon="mdi-source-repository"></v-icon>

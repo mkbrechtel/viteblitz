@@ -9,7 +9,7 @@ const baseHTML = `
   <head>
     <script>` + redirectToViteBlitz.toString() + `redirectToViteBlitz()</script>
     <meta charset="UTF-8" />
-    <title>Viteblitz</title>
+    <title>ViteBlitz</title>
   </head>
   <body>
     <script type="module" src="/src/app.js"></script>

@@ -1,4 +1,4 @@
-# Viteblitz!
+# ViteBlitz!
 
 Ohai!
 
