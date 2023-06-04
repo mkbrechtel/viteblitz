@@ -1,6 +1,8 @@
 <template>
     <v-app>
-        <Bar />
+        <TopBar />
+        <SideBar />
+
         <v-main>
             <Preview />
         </v-main>
