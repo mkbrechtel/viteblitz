@@ -22,20 +22,20 @@ import { ref } from 'vue'
             <span>commit</span>
         </v-system-bar>
 
-        <!-- <v-navigation-drawer rail temporary>
-            <v-list density="compact" nav>
-                <v-list-item prepend-icon="mdi-file-multiple" title="Files" value="files"></v-list-item>
-                <v-list-item prepend-icon="mdi-search" title="Search" value="search"></v-list-item>
-            </v-list>
-        </v-navigation-drawer> -->
-
-        <v-main class="d-flex w-100">
-            <div class="w-50">
-                <Editor />
-            </div>
-            <div class="w-50">
-                <Preview />
-            </div>
+        <v-main>
+            <v-container fluid class="w-100 h-100 ma-0 pa-0">
+                <v-row class="w-100 h-100 ma-0">
+                    <v-col cols="3" class="ma-0 pa-0">
+                        <Toolbox />
+                    </v-col>
+                    <v-col cols="4" class="ma-0 pa-0">
+                        <Editor />
+                    </v-col>
+                    <v-col cols="5" class="ma-0 pa-0">
+                        <Preview />
+                    </v-col>
+                </v-row>
+            </v-container>
         </v-main>
     </v-app>
 </template>
