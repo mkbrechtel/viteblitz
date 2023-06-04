@@ -1,22 +1,22 @@
 <script setup>
 
-import { ref } from 'vue'
+    import { ref } from 'vue'
 
-const url = ref('/')
-const previewIframe = ref(null)
+    const url = ref('/')
+    const previewIframe = ref(null)
 
-function previewGoBack() {
-    console.log(previewIframe.value.contentWindow)
-    previewIframe.value.contentWindow.history.back()
-}
+    function previewGoBack() {
+        console.log(previewIframe.value.contentWindow)
+        previewIframe.value.contentWindow.history.back()
+    }
 
-function previewRefresh() {
-    previewIframe.value.contentWindow.location.reload()
-}
+    function previewRefresh() {
+        previewIframe.value.contentWindow.location.reload()
+    }
 
-function previewLink() {
-    console.log('previewLink', previewIframe.value.contentWindow.location)
-}
+    function previewLink() {
+        console.log('previewLink', previewIframe.value.contentWindow.location)
+    }
 
 </script>
 
