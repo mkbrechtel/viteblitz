@@ -13,6 +13,7 @@
     "@codemirror/lang-markdown": "^6.1.1",
     "@codemirror/theme-one-dark": "^6.1.2",
     "codemirror": "^6.0.1",
+    "unplugin-vue-components": "^0.25.0",
     "vite-plugin-md": "^0.21.5",
     "vite-plugin-vue-inspector": "^3.4.2",
     "vue": "^3.2.47",

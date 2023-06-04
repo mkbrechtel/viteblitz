@@ -1,19 +1,10 @@
-<script>
-import Preview from './Preview.vue'
-import Editor from './Editor.vue'
-export default {
-  components: {
-    Preview,
-    Editor
-  }
-}
-</script>
 <template>
     <div id="app">
         <div id="editor"><Editor /></div>
         <div id="preview"><Preview /></div>
     </div>
 </template>
+
 <style>
 body {
     margin: 0;
