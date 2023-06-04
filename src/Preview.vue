@@ -1,6 +1,3 @@
-<script setup lang="ts">
-import HelloWorld from './ViteBlitz.vue'
-</script>
 
 <template>
   <iframe src="/"></iframe>
