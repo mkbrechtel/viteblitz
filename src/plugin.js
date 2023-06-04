@@ -29,6 +29,24 @@ const ViteBlitz = () => ({
       }
     })
   },
+  transformIndexHtml(html) {
+    return html.replace(
+      /(<head>)/,
+      `<head><script>
+        // Check if the window is not within an iframe
+        if (window.self === window.top) {
+          // Get the current URL
+          var oldUrl = window.location.pathname + window.location.search + window.location.hash;
+        
+          // Create the new URL with the old URL as a hash
+          var newUrl = "/__viteblitz#" + oldUrl;
+        
+          // Redirect to the new URL
+          window.location.href = newUrl;
+        }
+      </script>`,
+    )
+  },
 })
 
 export { ViteBlitz }
