@@ -29,7 +29,7 @@
         tabSize: 4,
         autofocus: true,
         placeholder: 'input...',
-        language: 'javascript',
+        language: 'markdown',
         theme: 'one-dark',// 'default',
         phrases: 'en-us'
     })
