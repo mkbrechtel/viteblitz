@@ -16,8 +16,10 @@
     "unplugin-vue-components": "^0.25.0",
     "vite-plugin-md": "^0.21.5",
     "vite-plugin-vue-inspector": "^3.4.2",
+    "vite-plugin-vuetify": "^1.0.2",
     "vue": "^3.2.47",
     "vue-codemirror": "^6.1.1",
+    "vuetify": "^3.3.2",
     "yjs": "^13.6.1"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
+import Vuetify from 'vite-plugin-vuetify'
 import Inspect from 'vite-plugin-inspect'
 // import Inspector from 'vite-plugin-vue-inspector'
 import { ViteBlitz } from "./src";
@@ -13,6 +14,9 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/]
     }),
     Components(),
+    Vuetify({ 
+      autoImport: true 
+    }),
     Markdown(),
     Inspect(),
     // Inspector(),
