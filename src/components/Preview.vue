@@ -1,21 +1,23 @@
 <script setup>
 
-    import { ref, watch} from 'vue'
+    import { ref, watch, onMounted } from 'vue'
 
-    const url = ref('/')
-
-
-    const iframeSrc = ref('/')
+    const url = ref(window.location.hash.startsWith('#/') && window.location.hash.substring(1) || '/')
     
     const barIcon = ref('mdi-link')
     const previewIframe = ref(null)
+
+    function setIframeURL(iframeURL){
+        previewIframe.value.contentWindow.location = iframeURL
+
+    }
+    onMounted(()=>{setIframeURL(url.value)})
 
     function previewGoBack() {
         try {
             previewIframe.value.contentWindow.history.back()
         } catch {
-            iframeSrc.value = url.value
-            previewIframe.value.contentWindow.location = "/"
+            setIframeURL(url.value)
         }
     }
 
@@ -32,9 +34,8 @@
         console.log('previewLink', previewIframe.value.contentWindow.location)
     }
 
-    function updateIframeLocation(){
+    function onIframeLocationChange(){
         const location = previewIframe.value.contentWindow.location
-        // try to access location.origin
         try {
             if(window.location.origin == location.origin) {
                 url.value = location.pathname + location.search + location.hash;
@@ -56,10 +57,23 @@
     }
     window.addEventListener("hashchange", onHashChange, false);
 
-    function onUrlChange(newValue,oldValue){
-        console.log('onUrlChange',newValue,oldValue)
+    function onUrlChange(newURL,oldURL){
+        const location = previewIframe.value.contentWindow.location
+        try {
+            if((window.location.origin == location.origin) && (newURL == (location.pathname + location.search + location.hash))){
+                console.log("onUrlChange/ignore",newURL)
+            } else {
+                console.log("onUrlChange/set",newURL)
+                setIframeURL(newURL)
+            }
+        } catch {
+            console.log("onUrlChange/catch",newURL)
+            setIframeURL(newURL)
+        }
     }
     watch(url, onUrlChange)
+
+
 </script>
 
 <template>
@@ -86,6 +100,6 @@
                 <v-icon>mdi-layers-edit</v-icon>
             </v-btn>
         </v-toolbar>
-        <iframe ref="previewIframe" class="w-100 h-100" :src="iframeSrc" style="border:none;" @load="updateIframeLocation"></iframe>
+        <iframe ref="previewIframe" class="w-100 h-100" style="border:none;" @load="onIframeLocationChange"></iframe>
     </v-container>
 </template>
