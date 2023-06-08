@@ -28,12 +28,12 @@
     }
 
     function submitBar() {
-        console.log("submitBar")
+        //console.log("submitBar")
         previewIframe.value.contentWindow.location.href = url.value
     }
 
     function previewLink() {
-        console.log('previewLink', previewIframe.value.contentWindow.location)
+        //console.log('previewLink', previewIframe.value.contentWindow.location)
     }
 
     function onIframeLocationChange(){
@@ -68,13 +68,13 @@
         const location = previewIframe.value.contentWindow.location
         try {
             if((window.location.origin == location.origin) && (newURL == (location.pathname + location.search + location.hash))){
-                console.log("onUrlChange/ignore",newURL)
+                //console.log("onUrlChange/ignore",newURL)
             } else {
-                console.log("onUrlChange/set",newURL)
+                //console.log("onUrlChange/set",newURL)
                 setIframeURL(newURL)
             }
         } catch {
-            console.log("onUrlChange/catch",newURL)
+            //console.log("onUrlChange/catch",newURL)
             setIframeURL(newURL)
         }
     }
