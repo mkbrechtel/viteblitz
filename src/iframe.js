@@ -10,20 +10,20 @@ export function redirectToViteBlitz() {
     if (window.self === window.top) {
         // check if the current window location is a viteblitz URL
         if (window.location.pathname.startsWith("/__viteblitz")) {
-            console.log("redirectToViteBlitz/self", contentUrl);
+            //console.log("redirectToViteBlitz/self", contentUrl);
         } else {
-            console.log("redirectToViteBlitz/redirect", contentUrl, viteblitzUrl);
+            //console.log("redirectToViteBlitz/redirect", contentUrl, viteblitzUrl);
             // redirect the current window to the viteblitz URL
             window.location.href = viteblitzUrl;
         } 
     } else {
         // Check if the contentURL is a viteblitz URL
         if (contentUrl.startsWith("/__viteblitz")) {
-            console.log("redirectToViteBlitz/redirectParent", contentUrl);
+            //console.log("redirectToViteBlitz/redirectParent", contentUrl);
             // redirect the parent window to the viteblitz URL
-            window.top.location.href = contentUrl;
+            window.top.location.assign(contentUrl);
         } else {
-            console.log("redirectToViteBlitz/ignore", contentUrl);
+            //console.log("redirectToViteBlitz/ignore", contentUrl);
         }
     }
 }
