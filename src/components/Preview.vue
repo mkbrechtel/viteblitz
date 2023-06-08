@@ -11,7 +11,9 @@
         previewIframe.value.contentWindow.location = iframeURL
 
     }
-    onMounted(()=>{setIframeURL(url.value)})
+    onMounted(()=>{
+        setIframeURL(url.value)
+    })
 
     function previewGoBack() {
         try {
@@ -28,8 +30,8 @@
     function submitBar() {
         console.log("submitBar")
         previewIframe.value.contentWindow.location.href = url.value
-
     }
+
     function previewLink() {
         console.log('previewLink', previewIframe.value.contentWindow.location)
     }
@@ -51,8 +53,13 @@
     }
 
     function onHashChange(){
-        if ( window.location.hash.startsWith('#/') && url.value != window.location.hash.substring(1) ) {
-            url.value = window.location.hash.substring(1)
+        const hash = window.location.hash
+        if ( hash.startsWith('#/__viteblitz#') ) {
+            window.location.hash = hash.substring(14)
+        } else {
+            if ( hash.startsWith('#/') && url.value != hash.substring(1) ) {
+                url.value = hash.substring(1)
+            }
         }
     }
     window.addEventListener("hashchange", onHashChange, false);
@@ -72,7 +79,6 @@
         }
     }
     watch(url, onUrlChange)
-
 
 </script>
 
