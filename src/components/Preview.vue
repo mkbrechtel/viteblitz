@@ -1,27 +1,69 @@
 <script setup>
 
-    import { ref } from 'vue'
+    import { ref, watch} from 'vue'
 
     const url = ref('/')
+
+
+    const iframeSrc = ref('/')
+    
+    const barIcon = ref('mdi-link')
     const previewIframe = ref(null)
 
     function previewGoBack() {
-        console.log(previewIframe.value.contentWindow)
-        previewIframe.value.contentWindow.history.back()
+        try {
+            previewIframe.value.contentWindow.history.back()
+        } catch {
+            iframeSrc.value = url.value
+            previewIframe.value.contentWindow.location = "/"
+        }
     }
 
     function previewRefresh() {
         previewIframe.value.contentWindow.location.reload()
     }
 
+    function submitBar() {
+        console.log("submitBar")
+        previewIframe.value.contentWindow.location.href = url.value
+
+    }
     function previewLink() {
         console.log('previewLink', previewIframe.value.contentWindow.location)
     }
 
+    function updateIframeLocation(){
+        const location = previewIframe.value.contentWindow.location
+        // try to access location.origin
+        try {
+            if(window.location.origin == location.origin) {
+                url.value = location.pathname + location.search + location.hash;
+                barIcon.value = "mdi-link"
+                window.location.hash = '#' + url.value
+            } else {
+                url.value = location.toString();
+                barIcon.value = "mdi-web"
+            }
+        } catch {
+            barIcon.value = "mdi-web"
+        }
+    }
+
+    function onHashChange(){
+        if ( window.location.hash.startsWith('#/') && url.value != window.location.hash.substring(1) ) {
+            url.value = window.location.hash.substring(1)
+        }
+    }
+    window.addEventListener("hashchange", onHashChange, false);
+
+    function onUrlChange(newValue,oldValue){
+        console.log('onUrlChange',newValue,oldValue)
+    }
+    watch(url, onUrlChange)
 </script>
 
 <template>
-    <v-content class="d-flex flex-column ma-0 pa-0 w-100 h-100">
+    <v-container fluid class="d-flex flex-column ma-0 pa-0 w-100 h-100">
         <v-toolbar density="compact">
             <v-btn icon @click="previewGoBack">
                 <v-icon>mdi-arrow-left</v-icon>
@@ -30,18 +72,20 @@
                 <v-icon>mdi-refresh</v-icon>
             </v-btn>
             <v-text-field
+                label="URL"
                 hide-details
                 single-line
                 v-model="url"
-                prepend-inner-icon="mdi-link"
+                :prepend-inner-icon="barIcon"
+                @onsubmit="submitBar"
             ></v-text-field>
             <v-btn icon @click="previewLink">
-                <v-icon>mdi-link-variant</v-icon>
+                <v-icon>mdi-share-variant</v-icon>
             </v-btn>
             <v-btn icon>
                 <v-icon>mdi-layers-edit</v-icon>
             </v-btn>
         </v-toolbar>
-        <iframe ref="previewIframe" class="w-100 h-100" style="border:none;" :src="url"></iframe>
-    </v-content>
+        <iframe ref="previewIframe" class="w-100 h-100" :src="iframeSrc" style="border:none;" @load="updateIframeLocation"></iframe>
+    </v-container>
 </template>
