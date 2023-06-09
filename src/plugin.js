@@ -37,6 +37,13 @@ const ViteBlitz = () => ({
     inspectScript += "<script>redirectToViteBlitz()</script>"
     return html.replace(/(<head>)/,"<head>" + inspectScript)
   },
+  // load(id){
+  //   console.log(id)
+  //   if (id == "/mnt/viteblitz/demo/components/Hello.md"){
+  //     return "# lalalulo"
+  //   }
+  //   return null
+  // },
 })
 
 export { ViteBlitz }
