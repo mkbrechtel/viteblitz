@@ -5,4 +5,5 @@
             <v-list-item prepend-icon="mdi-search" title="Search" value="search"></v-list-item>
         </v-list>
     </v-navigation-drawer>
+    <Project></Project>
 </template>
